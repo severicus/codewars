@@ -182,3 +182,38 @@ function narcissistic(value) {
   }
   return false;
 }
+
+/*Which are in
+
+Given two arrays of strings a1 and a2 return a sorted array r in lexicographical order of the strings of a1 which are substrings of strings of a2.
+
+Example 1:
+a1 = ["arp", "live", "strong"]
+
+a2 = ["lively", "alive", "harp", "sharp", "armstrong"]
+
+returns ["arp", "live", "strong"]
+
+Example 2:
+a1 = ["tarp", "mice", "bull"]
+
+a2 = ["lively", "alive", "harp", "sharp", "armstrong"]
+
+returns []
+*/
+function inArray(arr1, arr2) {
+  let arr = [];
+  //Here we sort the array by lexographical order
+  arr1 = arr1.sort();
+  arr2 = arr2.sort();
+  for (let i = 0; i < arr1.length; i++) {
+    for (let j = 0; j < arr2.length; j++) {
+      if (arr2[j].indexOf(arr1[i]) !== -1) {
+        arr.push(arr1[i]);
+        //the break is so that if we do find a matching substring, we only return it once
+        break;
+      }
+    }
+  }
+  return arr;
+}
